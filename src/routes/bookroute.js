@@ -31,10 +31,17 @@ router.post("/add", upload.single("image"), (req, res) => {
 });
 router.get("/search/:id", (req, res) => {
   const { id } = req.params;
-  bookController.searchBook(req, res, id);
+  bookController.getBookById(req, res, id);
 });
 router.put("/update/:id", (req, res) => {
   const { id } = req.params;
   bookController.updateBook(req, res, id);
+});
+router.delete("/delete/:id", (req, res) => {
+  const { id } = req.params;
+  bookController.deleteBook(req, res, id);
+});
+router.get("/find/all", (req, res) => {
+  bookController.searchBook(req, res);
 });
 export default router;
